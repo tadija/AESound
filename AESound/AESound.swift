@@ -44,7 +44,6 @@ public class AESoundTableViewController: UITableViewController {
         super.viewDidLoad()
         loadPaths()
         loadSounds()
-        print(directories)
     }
     
     // MARK: - Helpers
@@ -77,12 +76,12 @@ public class AESoundTableViewController: UITableViewController {
     func loadSounds() {
         for dir in directories {
             if let path = dir.path {
-                sounds[path] = soundsForPath(path)
+                sounds[path] = soundsForDirectoryPath(path)
             }
         }
     }
     
-    func soundsForPath(path: String) -> [NSURL] {
+    func soundsForDirectoryPath(path: String) -> [NSURL] {
         var result = [NSURL]()
         for file in files {
             if let filePath = file.URLByDeletingLastPathComponent?.path where filePath == path {
@@ -90,6 +89,17 @@ public class AESoundTableViewController: UITableViewController {
             }
         }
         return result
+    }
+    
+    func soundURLForIndexPath(indexPath: NSIndexPath) -> NSURL? {
+        guard let
+            directory = directories[indexPath.section].path,
+            soundsFromDirectory = sounds[directory]
+        else { return nil }
+        
+        let sortedSounds = soundsFromDirectory.sort { $0.path!.localizedCaseInsensitiveCompare($1.path!) == .OrderedAscending }
+        let soundURL = sortedSounds[indexPath.row]
+        return soundURL
     }
     
     // MARK: - UITableViewDataSource
@@ -109,21 +119,21 @@ public class AESoundTableViewController: UITableViewController {
     }
     
     public override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let defaultCell = UITableViewCell(style: .Subtitle, reuseIdentifier: "Cell")
+        let defaultCell = UITableViewCell(style: .Value1, reuseIdentifier: "Cell")
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell") ?? defaultCell
         
-        if let directory = directories[indexPath.section].path, soundsFromDirectory = sounds[directory] {
-            let sound = soundsFromDirectory[indexPath.row]
-            cell.textLabel?.text = sound.lastPathComponent
-            cell.detailTextLabel?.text = sound.path
+        if let soundURL = soundURLForIndexPath(indexPath) {
+            cell.textLabel?.text = soundURL.lastPathComponent
+            cell.detailTextLabel?.text = "\(indexPath.row + 1)"
         }
         
         return cell
     }
     
     public override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        guard let path = files[indexPath.row].path else { return }
-        AESound.play(path)
+        if let soundURL = soundURLForIndexPath(indexPath), soundPath = soundURL.path {
+            AESound.play(soundPath)
+        }
     }
     
 }
