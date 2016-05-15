@@ -64,6 +64,24 @@ public class AESoundTableViewController: UITableViewController {
         
         loadPaths()
         print(paths)
+        
+        tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "Cell")
+    }
+    
+    public override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return paths.count
+    }
+    
+    public override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath)
+        let path = paths[indexPath.row]
+        cell.textLabel?.text = path
+        return cell
+    }
+    
+    public override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let path = paths[indexPath.row]
+        AESound.play(path)
     }
     
 }
