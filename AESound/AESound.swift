@@ -13,6 +13,8 @@ import UIKit
 
 public class AESound {
     
+    // MARK: - API
+    
     public class func play(soundPath: String) {
         var soundID: SystemSoundID = 0
         let pathURL = NSURL(fileURLWithPath: soundPath)
@@ -54,9 +56,9 @@ public class AESoundTableViewController: UITableViewController {
         let keys = [NSURLIsDirectoryKey]
         
         guard let
-            url = NSURL(string: "/System/Library/Audio/UISounds"),
-            enumerator = fileManager.enumeratorAtURL(url, includingPropertiesForKeys: keys, options: [], errorHandler: nil)
-            else { return }
+            enumerator = fileManager.enumeratorAtURL(AESoundTableViewController.root,
+                                                     includingPropertiesForKeys: keys, options: [], errorHandler: nil)
+        else { return }
         
         for object in enumerator {
             guard let url = object as? NSURL else { return }
@@ -97,7 +99,9 @@ public class AESoundTableViewController: UITableViewController {
             soundsFromDirectory = sounds[directory]
         else { return nil }
         
-        let sortedSounds = soundsFromDirectory.sort { $0.path!.localizedCaseInsensitiveCompare($1.path!) == .OrderedAscending }
+        let sortedSounds = soundsFromDirectory.sort {
+            $0.path!.localizedCaseInsensitiveCompare($1.path!) == .OrderedAscending
+        }
         let soundURL = sortedSounds[indexPath.row]
         return soundURL
     }
