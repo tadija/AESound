@@ -32,7 +32,22 @@ public class AESoundTableViewController: UITableViewController {
     
     // MARK: - Properties
     
-    var urls = [NSURL]()
+    static let root = NSURL(string: "/System/Library/Audio/UISounds/")!
+    var directories = [root]
+    var files = [NSURL]()
+    
+    var sounds = [String : [NSURL]]()
+    
+    // MARK: - Lifecycle
+    
+    public override func viewDidLoad() {
+        super.viewDidLoad()
+        loadPaths()
+        loadSounds()
+        print(directories)
+    }
+    
+    // MARK: - Helpers
     
     /// - NOTE: This method will only work on device, not on simulator!
     func loadPaths() {
@@ -42,7 +57,7 @@ public class AESoundTableViewController: UITableViewController {
         guard let
             url = NSURL(string: "/System/Library/Audio/UISounds"),
             enumerator = fileManager.enumeratorAtURL(url, includingPropertiesForKeys: keys, options: [], errorHandler: nil)
-        else { return }
+            else { return }
         
         for object in enumerator {
             guard let url = object as? NSURL else { return }
@@ -50,38 +65,64 @@ public class AESoundTableViewController: UITableViewController {
                 var resource: AnyObject?
                 try url.getResourceValue(&resource, forKey: NSURLIsDirectoryKey)
                 guard let isDirectory = (resource as? NSNumber)?.boolValue else { return }
-                if !isDirectory { urls.append(url) }
+                if isDirectory {
+                    directories.append(url)
+                } else {
+                    files.append(url)
+                }
             } catch { print(error) }
         }
     }
     
-    // MARK: - Lifecycle
+    func loadSounds() {
+        for dir in directories {
+            if let path = dir.path {
+                sounds[path] = soundsForPath(path)
+            }
+        }
+    }
     
-    public override func viewDidLoad() {
-        super.viewDidLoad()
-        loadPaths()
+    func soundsForPath(path: String) -> [NSURL] {
+        var result = [NSURL]()
+        for file in files {
+            if let filePath = file.URLByDeletingLastPathComponent?.path where filePath == path {
+                result.append(file)
+            }
+        }
+        return result
     }
     
     // MARK: - UITableViewDataSource
     
+    public override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return directories.count
+    }
+    
+    public override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        let dir = directories[section]
+        return dir.path
+    }
+    
     public override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return urls.count
+        guard let key = directories[section].path else { return 0 }
+        return sounds[key]?.count ?? 0
     }
     
     public override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let defaultCell = UITableViewCell(style: .Subtitle, reuseIdentifier: "Cell")
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell") ?? defaultCell
         
-        let url = urls[indexPath.row]
-        
-        cell.textLabel?.text = url.lastPathComponent
-        cell.detailTextLabel?.text = url.path
+        if let directory = directories[indexPath.section].path, soundsFromDirectory = sounds[directory] {
+            let sound = soundsFromDirectory[indexPath.row]
+            cell.textLabel?.text = sound.lastPathComponent
+            cell.detailTextLabel?.text = sound.path
+        }
         
         return cell
     }
     
     public override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        guard let path = urls[indexPath.row].path else { return }
+        guard let path = files[indexPath.row].path else { return }
         AESound.play(path)
     }
     
