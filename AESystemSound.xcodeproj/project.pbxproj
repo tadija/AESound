@@ -17,6 +17,8 @@
 
 /* Begin PBXFileReference section */
 		8B556F4E210FC67A00454DDA /* SystemSoundsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemSoundsTableViewController.swift; sourceTree = "<group>"; };
+		8B556F53210FD5AD00454DDA /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		8B556F54210FD5AD00454DDA /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		8B782E781CE8E82C00B3974B /* AESystemSound.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AESystemSound.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B782E7B1CE8E82C00B3974B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8B782E801CE8E82C00B3974B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -37,11 +39,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8B556F51210FD42400454DDA /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				8B782E7B1CE8E82C00B3974B /* AppDelegate.swift */,
+				8B782E841CE8E82C00B3974B /* LaunchScreen.storyboard */,
+				8B782E7F1CE8E82C00B3974B /* Main.storyboard */,
+				8B782E821CE8E82C00B3974B /* Assets.xcassets */,
+				8B782E871CE8E82C00B3974B /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 		8B782E6F1CE8E82C00B3974B = {
 			isa = PBXGroup;
 			children = (
 				8B782E7A1CE8E82C00B3974B /* AESystemSound */,
 				8B782E791CE8E82C00B3974B /* Products */,
+				8B556F53210FD5AD00454DDA /* LICENSE */,
+				8B556F54210FD5AD00454DDA /* README.md */,
 			);
 			sourceTree = "<group>";
 		};
@@ -56,13 +72,9 @@
 		8B782E7A1CE8E82C00B3974B /* AESystemSound */ = {
 			isa = PBXGroup;
 			children = (
-				8B782E7B1CE8E82C00B3974B /* AppDelegate.swift */,
 				8B782E8D1CE8E83C00B3974B /* AESystemSound.swift */,
 				8B556F4E210FC67A00454DDA /* SystemSoundsTableViewController.swift */,
-				8B782E7F1CE8E82C00B3974B /* Main.storyboard */,
-				8B782E821CE8E82C00B3974B /* Assets.xcassets */,
-				8B782E841CE8E82C00B3974B /* LaunchScreen.storyboard */,
-				8B782E871CE8E82C00B3974B /* Info.plist */,
+				8B556F51210FD42400454DDA /* Supporting Files */,
 			);
 			path = AESystemSound;
 			sourceTree = "<group>";
