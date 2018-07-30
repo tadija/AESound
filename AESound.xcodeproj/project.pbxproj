@@ -13,7 +13,6 @@
 		8B782E831CE8E82C00B3974B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8B782E821CE8E82C00B3974B /* Assets.xcassets */; };
 		8B782E861CE8E82C00B3974B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8B782E841CE8E82C00B3974B /* LaunchScreen.storyboard */; };
 		8B782E8E1CE8E83C00B3974B /* AESystemSound.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B782E8D1CE8E83C00B3974B /* AESystemSound.swift */; };
-		8B782E901CE8E84200B3974B /* AESoundConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B782E8F1CE8E84200B3974B /* AESoundConstants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,7 +24,6 @@
 		8B782E851CE8E82C00B3974B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8B782E871CE8E82C00B3974B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8B782E8D1CE8E83C00B3974B /* AESystemSound.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AESystemSound.swift; sourceTree = "<group>"; };
-		8B782E8F1CE8E84200B3974B /* AESoundConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AESoundConstants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,7 +58,6 @@
 			children = (
 				8B782E7B1CE8E82C00B3974B /* AppDelegate.swift */,
 				8B782E8D1CE8E83C00B3974B /* AESystemSound.swift */,
-				8B782E8F1CE8E84200B3974B /* AESoundConstants.swift */,
 				8B556F4E210FC67A00454DDA /* SystemSoundsTableViewController.swift */,
 				8B782E7F1CE8E82C00B3974B /* Main.storyboard */,
 				8B782E821CE8E82C00B3974B /* Assets.xcassets */,
@@ -142,7 +139,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8B782E901CE8E84200B3974B /* AESoundConstants.swift in Sources */,
 				8B782E7C1CE8E82C00B3974B /* AppDelegate.swift in Sources */,
 				8B782E8E1CE8E83C00B3974B /* AESystemSound.swift in Sources */,
 				8B556F4F210FC67A00454DDA /* SystemSoundsTableViewController.swift in Sources */,
