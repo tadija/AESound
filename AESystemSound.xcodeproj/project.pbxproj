@@ -7,25 +7,25 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8B556F4F210FC67A00454DDA /* SystemSoundsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B556F4E210FC67A00454DDA /* SystemSoundsTableViewController.swift */; };
 		8B782E7C1CE8E82C00B3974B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B782E7B1CE8E82C00B3974B /* AppDelegate.swift */; };
-		8B782E7E1CE8E82C00B3974B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B782E7D1CE8E82C00B3974B /* ViewController.swift */; };
 		8B782E811CE8E82C00B3974B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8B782E7F1CE8E82C00B3974B /* Main.storyboard */; };
 		8B782E831CE8E82C00B3974B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8B782E821CE8E82C00B3974B /* Assets.xcassets */; };
 		8B782E861CE8E82C00B3974B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8B782E841CE8E82C00B3974B /* LaunchScreen.storyboard */; };
-		8B782E8E1CE8E83C00B3974B /* AESound.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B782E8D1CE8E83C00B3974B /* AESound.swift */; };
-		8B782E901CE8E84200B3974B /* AESoundConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B782E8F1CE8E84200B3974B /* AESoundConstants.swift */; };
+		8B782E8E1CE8E83C00B3974B /* AESystemSound.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B782E8D1CE8E83C00B3974B /* AESystemSound.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		8B782E781CE8E82C00B3974B /* AESound.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AESound.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		8B556F4E210FC67A00454DDA /* SystemSoundsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemSoundsTableViewController.swift; sourceTree = "<group>"; };
+		8B556F53210FD5AD00454DDA /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		8B556F54210FD5AD00454DDA /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		8B782E781CE8E82C00B3974B /* AESystemSound.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AESystemSound.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B782E7B1CE8E82C00B3974B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		8B782E7D1CE8E82C00B3974B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		8B782E801CE8E82C00B3974B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8B782E821CE8E82C00B3974B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8B782E851CE8E82C00B3974B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8B782E871CE8E82C00B3974B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		8B782E8D1CE8E83C00B3974B /* AESound.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AESound.swift; sourceTree = "<group>"; };
-		8B782E8F1CE8E84200B3974B /* AESoundConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AESoundConstants.swift; sourceTree = "<group>"; };
+		8B782E8D1CE8E83C00B3974B /* AESystemSound.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AESystemSound.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -39,43 +39,52 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8B556F51210FD42400454DDA /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				8B782E7B1CE8E82C00B3974B /* AppDelegate.swift */,
+				8B782E841CE8E82C00B3974B /* LaunchScreen.storyboard */,
+				8B782E7F1CE8E82C00B3974B /* Main.storyboard */,
+				8B782E821CE8E82C00B3974B /* Assets.xcassets */,
+				8B782E871CE8E82C00B3974B /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 		8B782E6F1CE8E82C00B3974B = {
 			isa = PBXGroup;
 			children = (
-				8B782E7A1CE8E82C00B3974B /* AESound */,
+				8B782E7A1CE8E82C00B3974B /* AESystemSound */,
 				8B782E791CE8E82C00B3974B /* Products */,
+				8B556F53210FD5AD00454DDA /* LICENSE */,
+				8B556F54210FD5AD00454DDA /* README.md */,
 			);
 			sourceTree = "<group>";
 		};
 		8B782E791CE8E82C00B3974B /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				8B782E781CE8E82C00B3974B /* AESound.app */,
+				8B782E781CE8E82C00B3974B /* AESystemSound.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		8B782E7A1CE8E82C00B3974B /* AESound */ = {
+		8B782E7A1CE8E82C00B3974B /* AESystemSound */ = {
 			isa = PBXGroup;
 			children = (
-				8B782E7B1CE8E82C00B3974B /* AppDelegate.swift */,
-				8B782E7D1CE8E82C00B3974B /* ViewController.swift */,
-				8B782E8D1CE8E83C00B3974B /* AESound.swift */,
-				8B782E8F1CE8E84200B3974B /* AESoundConstants.swift */,
-				8B782E7F1CE8E82C00B3974B /* Main.storyboard */,
-				8B782E821CE8E82C00B3974B /* Assets.xcassets */,
-				8B782E841CE8E82C00B3974B /* LaunchScreen.storyboard */,
-				8B782E871CE8E82C00B3974B /* Info.plist */,
+				8B782E8D1CE8E83C00B3974B /* AESystemSound.swift */,
+				8B556F4E210FC67A00454DDA /* SystemSoundsTableViewController.swift */,
+				8B556F51210FD42400454DDA /* Supporting Files */,
 			);
-			path = AESound;
+			path = AESystemSound;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		8B782E771CE8E82C00B3974B /* AESound */ = {
+		8B782E771CE8E82C00B3974B /* AESystemSound */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 8B782E8A1CE8E82C00B3974B /* Build configuration list for PBXNativeTarget "AESound" */;
+			buildConfigurationList = 8B782E8A1CE8E82C00B3974B /* Build configuration list for PBXNativeTarget "AESystemSound" */;
 			buildPhases = (
 				8B782E741CE8E82C00B3974B /* Sources */,
 				8B782E751CE8E82C00B3974B /* Frameworks */,
@@ -85,9 +94,9 @@
 			);
 			dependencies = (
 			);
-			name = AESound;
+			name = AESystemSound;
 			productName = AESound;
-			productReference = 8B782E781CE8E82C00B3974B /* AESound.app */;
+			productReference = 8B782E781CE8E82C00B3974B /* AESystemSound.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -106,7 +115,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 8B782E731CE8E82C00B3974B /* Build configuration list for PBXProject "AESound" */;
+			buildConfigurationList = 8B782E731CE8E82C00B3974B /* Build configuration list for PBXProject "AESystemSound" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -119,7 +128,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				8B782E771CE8E82C00B3974B /* AESound */,
+				8B782E771CE8E82C00B3974B /* AESystemSound */,
 			);
 		};
 /* End PBXProject section */
@@ -142,10 +151,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8B782E7E1CE8E82C00B3974B /* ViewController.swift in Sources */,
-				8B782E901CE8E84200B3974B /* AESoundConstants.swift in Sources */,
 				8B782E7C1CE8E82C00B3974B /* AppDelegate.swift in Sources */,
-				8B782E8E1CE8E83C00B3974B /* AESound.swift in Sources */,
+				8B782E8E1CE8E83C00B3974B /* AESystemSound.swift in Sources */,
+				8B556F4F210FC67A00454DDA /* SystemSoundsTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -282,9 +290,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = VL46Q749LJ;
-				INFOPLIST_FILE = AESound/Info.plist;
+				INFOPLIST_FILE = AESystemSound/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = net.tadija.AESound;
+				PRODUCT_BUNDLE_IDENTIFIER = net.tadija.AESystemSound;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 			};
@@ -295,9 +303,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = VL46Q749LJ;
-				INFOPLIST_FILE = AESound/Info.plist;
+				INFOPLIST_FILE = AESystemSound/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = net.tadija.AESound;
+				PRODUCT_BUNDLE_IDENTIFIER = net.tadija.AESystemSound;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 			};
@@ -306,7 +314,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		8B782E731CE8E82C00B3974B /* Build configuration list for PBXProject "AESound" */ = {
+		8B782E731CE8E82C00B3974B /* Build configuration list for PBXProject "AESystemSound" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				8B782E881CE8E82C00B3974B /* Debug */,
@@ -315,7 +323,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		8B782E8A1CE8E82C00B3974B /* Build configuration list for PBXNativeTarget "AESound" */ = {
+		8B782E8A1CE8E82C00B3974B /* Build configuration list for PBXNativeTarget "AESystemSound" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				8B782E8B1CE8E82C00B3974B /* Debug */,
