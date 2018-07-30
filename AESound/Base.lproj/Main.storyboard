@@ -9,10 +9,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--AESound-->
+        <!--System Sounds-->
         <scene sceneID="3id-aF-FqO">
             <objects>
-                <tableViewController id="Maa-GM-XhT" customClass="AESoundTableViewController" customModule="AESound" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="Maa-GM-XhT" customClass="SystemSoundsTableViewController" customModule="AESound" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="lnD-Lm-AEO">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -22,7 +22,7 @@
                             <outlet property="delegate" destination="Maa-GM-XhT" id="sgR-qJ-IiA"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="AESound" id="GU1-H6-8qe"/>
+                    <navigationItem key="navigationItem" title="System Sounds" id="GU1-H6-8qe"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BDm-12-e0M" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
