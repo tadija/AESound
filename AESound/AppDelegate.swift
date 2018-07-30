@@ -1,10 +1,8 @@
-//
-//  AppDelegate.swift
-//  AESound
-//
-//  Created by Marko Tadic on 5/15/16.
-//  Copyright © 2016 AE. All rights reserved.
-//
+/**
+ *  https://github.com/tadija/AESystemSound
+ *  Copyright (c) Marko Tadić 2018
+ *  Licensed under the MIT license. See LICENSE file.
+ */
 
 import UIKit
 

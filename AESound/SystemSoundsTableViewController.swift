@@ -8,15 +8,14 @@ import UIKit
 
 public final class SystemSoundsTableViewController: UITableViewController {
 
-    // MARK: - Properties
+    // MARK: Properties
 
-    static let rootURL = URL(string: "/System/Library/Audio/UISounds/")!
-    var directories = [rootURL]
-    var files = [URL]()
+    private let systemSoundsDirectoryURL = URL(string: "/System/Library/Audio/UISounds/")!
+    private lazy var directories: [URL] = { [systemSoundsDirectoryURL] }()
+    private var files = [URL]()
+    private var sounds = [String: [URL]]()
 
-    var sounds = [String : [URL]]()
-
-    // MARK: - Lifecycle
+    // MARK: Lifecycle
 
     public override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,69 +24,14 @@ public final class SystemSoundsTableViewController: UITableViewController {
         loadSounds()
     }
 
-    // MARK: - Helpers
-
-    /// - Note: This method will only work on device, not on simulator!
-    func loadPaths() {
-        let fileManager = FileManager.default
-        let keys = [URLResourceKey.isDirectoryKey]
-
-        guard let enumerator = fileManager.enumerator(at: SystemSoundsTableViewController.rootURL,
-                                                      includingPropertiesForKeys: keys)
-            else { return }
-
-        for object in enumerator {
-            guard let url = object as? URL else { return }
-            do {
-                let resource = try url.resourceValues(forKeys: Set(keys))
-                guard let isDirectory = resource.isDirectory else { return }
-                if isDirectory {
-                    directories.append(url)
-                } else {
-                    files.append(url)
-                }
-            } catch { print(error) }
-        }
-    }
-
-    func loadSounds() {
-        for dir in directories {
-            let path = dir.path
-            sounds[path] = soundsForDirectoryPath(path: path)
-        }
-    }
-
-    func soundsForDirectoryPath(path: String) -> [URL] {
-        var result = [URL]()
-        for file in files {
-            if file.deletingLastPathComponent().path == path {
-                result.append(file)
-            }
-        }
-        return result
-    }
-
-    func soundURL(for indexPath: IndexPath) -> URL? {
-        let directory = directories[indexPath.section].path
-        guard let soundsFromDirectory = sounds[directory]
-            else { return nil }
-
-        let sortedSounds = soundsFromDirectory.sorted {
-            $0.path.localizedCaseInsensitiveCompare($1.path) == .orderedAscending
-        }
-        let soundURL = sortedSounds[indexPath.row]
-        return soundURL
-    }
-
-    // MARK: - UITableViewDataSource
+    // MARK: UITableViewDataSource
 
     public override func numberOfSections(in tableView: UITableView) -> Int {
         return directories.count
     }
 
     public override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        let dir = directories[section]
-        return dir.path
+        return directories[section].path
     }
 
     public override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -96,21 +40,56 @@ public final class SystemSoundsTableViewController: UITableViewController {
     }
 
     public override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let defaultCell = UITableViewCell(style: .value1, reuseIdentifier: "Cell")
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell") ?? defaultCell
-
+        let cell = tableView.dequeueReusableCell(withIdentifier: "SystemSoundCell", for: indexPath)
         if let soundURL = soundURL(for: indexPath) {
             cell.textLabel?.text = soundURL.lastPathComponent
             cell.detailTextLabel?.text = "\(indexPath.row + 1)"
         }
-
         return cell
     }
 
+    // MARK: UITableViewDelegate
+
     public override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let soundURL = soundURL(for: indexPath) {
-            AESound.play(fromPath: soundURL.path)
+            AESystemSound.play(fromPath: soundURL.path)
+            tableView.deselectRow(at: indexPath, animated: true)
         }
+    }
+
+    // MARK: Helpers
+
+    /// - Attention: This method will only work on the real device, not on simulator!
+    func loadPaths() {
+        let keys = [URLResourceKey.isDirectoryKey]
+        let enumerator = FileManager.default.enumerator(at: systemSoundsDirectoryURL, includingPropertiesForKeys: keys)
+        enumerator?.forEach { (item) in
+            guard let url = item as? URL else { return }
+            do {
+                let resource = try url.resourceValues(forKeys: Set(keys))
+                guard let isDirectory = resource.isDirectory else { return }
+                isDirectory ? directories.append(url) : files.append(url)
+            } catch {
+                print(error)
+            }
+        }
+    }
+
+    func loadSounds() {
+        directories.forEach{
+            let path = $0.path
+            let soundsAtPath = files.filter { $0.deletingLastPathComponent().path == path }
+            sounds[path] = soundsAtPath
+        }
+    }
+
+    func soundURL(for indexPath: IndexPath) -> URL? {
+        let path = directories[indexPath.section].path
+        let sortedSounds = sounds[path]?.sorted {
+            $0.path.localizedCaseInsensitiveCompare($1.path) == .orderedAscending
+        }
+        let soundURL = sortedSounds?[indexPath.row]
+        return soundURL
     }
 
 }
