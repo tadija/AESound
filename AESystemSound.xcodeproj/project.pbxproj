@@ -19,6 +19,7 @@
 		8B556F4E210FC67A00454DDA /* SystemSoundsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemSoundsTableViewController.swift; sourceTree = "<group>"; };
 		8B556F53210FD5AD00454DDA /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		8B556F54210FD5AD00454DDA /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		8B5697B82110DCAA003DE673 /* CHANGELOG.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = CHANGELOG.md; sourceTree = "<group>"; };
 		8B782E781CE8E82C00B3974B /* AESystemSound.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AESystemSound.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B782E7B1CE8E82C00B3974B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8B782E801CE8E82C00B3974B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -58,6 +59,7 @@
 				8B782E791CE8E82C00B3974B /* Products */,
 				8B556F53210FD5AD00454DDA /* LICENSE */,
 				8B556F54210FD5AD00454DDA /* README.md */,
+				8B5697B82110DCAA003DE673 /* CHANGELOG.md */,
 			);
 			sourceTree = "<group>";
 		};
