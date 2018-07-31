@@ -22,6 +22,7 @@ public final class SystemSoundsTableViewController: UITableViewController {
 
         loadPaths()
         loadSounds()
+        printPathEnum()
     }
 
     // MARK: UITableViewDataSource
@@ -90,6 +91,31 @@ public final class SystemSoundsTableViewController: UITableViewController {
         }
         let soundURL = sortedSounds?[indexPath.row]
         return soundURL
+    }
+
+    func printPathEnum() {
+        var text = "public enum Path: String {\n"
+        let pathURLs = sounds.keys.map { URL(fileURLWithPath: $0, isDirectory: true) }
+        let sortedPathURLs = pathURLs.sorted {
+            $0.lastPathComponent.localizedCaseInsensitiveCompare($1.lastPathComponent) == .orderedAscending
+        }
+        sortedPathURLs.forEach { (pathURL) in
+            if let urls = sounds[pathURL.path] {
+                let groupName = pathURL.lastPathComponent.lowercased()
+                let sortedURLs = urls.sorted {
+                    $0.path.localizedCaseInsensitiveCompare($1.path) == .orderedAscending
+                }
+                sortedURLs.forEach{ (url) in
+                    let soundName = url.deletingPathExtension().lastPathComponent
+                        .replacingOccurrences(of: "-", with: "_")
+                        .replacingOccurrences(of: "~", with: "_").lowercased()
+                    let caseText = "\tcase \(groupName)_\(soundName) = \"\(url.path)\"\n"
+                    text += caseText
+                }
+            }
+        }
+        text += "}"
+        print(text)
     }
 
 }
