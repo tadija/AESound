@@ -9,32 +9,6 @@ import AVFoundation
 
 public final class AESound {
 
-    // MARK: AVFoundation
-
-    private var players = [String: AVAudioPlayer]()
-
-    @discardableResult
-    public func preparePlayerForSound(atPath path: String) -> AVAudioPlayer? {
-        let url = URL(fileURLWithPath: path)
-        guard let player = try? AVAudioPlayer(contentsOf: url) else {
-            return nil
-        }
-        players[path] = player
-        return player
-    }
-
-    public func playSound(atPath path: String) {
-        if let player = players[path] {
-            player.play()
-        } else {
-            preparePlayerForSound(atPath: path)?.play()
-        }
-    }
-
-    public func cleanupPlayerForSound(atPath path: String) {
-        players[path] = nil
-    }
-
     // MARK: AudioToolbox
 
     public func playSystemSound(_ systemSound: AESound.SystemSound) {
@@ -53,6 +27,32 @@ public final class AESound {
             AudioServicesDisposeSystemSoundID(id)
         }, nil)
         AudioServicesPlaySystemSound(id)
+    }
+
+    // MARK: AVFoundation
+
+    private var players = [String: AVAudioPlayer]()
+
+    @discardableResult
+    public func prepareSound(atPath path: String) -> AVAudioPlayer? {
+        let url = URL(fileURLWithPath: path)
+        guard let player = try? AVAudioPlayer(contentsOf: url) else {
+            return nil
+        }
+        players[path] = player
+        return player
+    }
+
+    public func playSound(atPath path: String) {
+        if let player = players[path] {
+            player.play()
+        } else {
+            prepareSound(atPath: path)?.play()
+        }
+    }
+
+    public func cleanupSound(atPath path: String) {
+        players[path] = nil
     }
 
 }
