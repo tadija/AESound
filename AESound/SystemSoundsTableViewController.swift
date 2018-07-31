@@ -8,6 +8,11 @@ import UIKit
 
 public final class SystemSoundsTableViewController: UITableViewController, UISearchResultsUpdating, UISearchBarDelegate {
 
+    private enum Framework: String {
+        case AudioToolbox
+        case AVFoundation
+    }
+
     // MARK: Properties
 
     private let systemSoundsDirectoryURL = URL(string: "/System/Library/Audio/UISounds/")!
@@ -19,6 +24,12 @@ public final class SystemSoundsTableViewController: UITableViewController, UISea
     private var searchResults = [URL]()
     private var isSearching = false
 
+    private var framework = Framework.AudioToolbox
+    private let output = AESound()
+    private lazy var toggleFrameworkButton: UIBarButtonItem = {
+         UIBarButtonItem(title: "Toggle Framework", style: .plain, target: self, action: #selector(toggleFramework(_:)))
+    }()
+
     // MARK: Lifecycle
 
     public override func viewDidLoad() {
@@ -26,6 +37,19 @@ public final class SystemSoundsTableViewController: UITableViewController, UISea
 
         configureUI()
         loadData()
+    }
+
+    // MARK: Actions
+
+    @objc
+    private func toggleFramework(_ sender: UIBarButtonItem) {
+        switch framework {
+        case .AudioToolbox:
+            framework = .AVFoundation
+        case .AVFoundation:
+            framework = .AudioToolbox
+        }
+        title = framework.rawValue
     }
 
     // MARK: UITableViewDataSource
@@ -57,7 +81,12 @@ public final class SystemSoundsTableViewController: UITableViewController, UISea
 
     public override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let soundURL = soundURL(for: indexPath) {
-            AESound().playSystemSound(atPath: soundURL.path)
+            switch framework {
+            case .AudioToolbox:
+                output.playSystemSound(atPath: soundURL.path)
+            case .AVFoundation:
+                output.playSound(atPath: soundURL.path)
+            }
             tableView.deselectRow(at: indexPath, animated: true)
         }
     }
@@ -93,6 +122,8 @@ public final class SystemSoundsTableViewController: UITableViewController, UISea
 
         navigationItem.searchController = searchController
         definesPresentationContext = true
+
+        navigationItem.rightBarButtonItem = toggleFrameworkButton
     }
 
     private func loadData() {
