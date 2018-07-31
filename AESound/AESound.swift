@@ -5,26 +5,60 @@
  */
 
 import AudioToolbox
+import AVFoundation
 
-public struct AESound {
-    public static func play(_ path: AESound.Path) {
-        play(fromPath: path.rawValue)
+public final class AESound {
+
+    // MARK: AVFoundation
+
+    private var players = [String: AVAudioPlayer]()
+
+    @discardableResult
+    public func preparePlayerForSound(atPath path: String) -> AVAudioPlayer? {
+        let url = URL(fileURLWithPath: path)
+        guard let player = try? AVAudioPlayer(contentsOf: url) else {
+            return nil
+        }
+        players[path] = player
+        return player
     }
 
-    public static func play(fromPath path: String) {
+    public func playSound(atPath path: String) {
+        if let player = players[path] {
+            player.play()
+        } else {
+            preparePlayerForSound(atPath: path)?.play()
+        }
+    }
+
+    public func cleanupPlayerForSound(atPath path: String) {
+        players[path] = nil
+    }
+
+    // MARK: AudioToolbox
+
+    public func playSystemSound(_ systemSound: AESound.SystemSound) {
+        playSystemSound(atPath: systemSound.rawValue)
+    }
+
+    public func playSystemSound(atPath path: String) {
         var id: SystemSoundID = 0
         let url = URL(fileURLWithPath: path)
         AudioServicesCreateSystemSoundID(url as CFURL, &id)
-        play(withID: id)
+        playSystemSound(withID: id)
     }
-    
-    public static func play(withID id: SystemSoundID) {
+
+    public func playSystemSound(withID id: SystemSoundID) {
+        AudioServicesAddSystemSoundCompletion(id, nil, nil, { (id, _) -> Void in
+            AudioServicesDisposeSystemSoundID(id)
+        }, nil)
         AudioServicesPlaySystemSound(id)
     }
+
 }
 
 extension AESound {
-    public enum Path: String {
+    public enum SystemSound: String {
         case modern_camera_shutter_burst_begin = "/System/Library/Audio/UISounds/Modern/camera_shutter_burst_begin.caf"
         case modern_camera_shutter_burst_end = "/System/Library/Audio/UISounds/Modern/camera_shutter_burst_end.caf"
         case modern_camera_shutter_burst = "/System/Library/Audio/UISounds/Modern/camera_shutter_burst.caf"

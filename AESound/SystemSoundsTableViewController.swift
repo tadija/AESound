@@ -53,7 +53,7 @@ public final class SystemSoundsTableViewController: UITableViewController {
 
     public override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let soundURL = soundURL(for: indexPath) {
-            AESound.play(fromPath: soundURL.path)
+            AESound().playSystemSound(atPath: soundURL.path)
             tableView.deselectRow(at: indexPath, animated: true)
         }
     }
