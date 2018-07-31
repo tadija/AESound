@@ -6,46 +6,50 @@
 
 import UIKit
 
-public final class SystemSoundsTableViewController: UITableViewController {
+public final class SystemSoundsTableViewController: UITableViewController, UISearchResultsUpdating, UISearchBarDelegate {
 
     // MARK: Properties
 
     private let systemSoundsDirectoryURL = URL(string: "/System/Library/Audio/UISounds/")!
-    private lazy var directories: [URL] = { [systemSoundsDirectoryURL] }()
+    private var directories = [URL]()
     private var files = [URL]()
     private var sounds = [String: [URL]]()
+
+    private let searchController = UISearchController(searchResultsController: nil)
+    private var searchResults = [URL]()
+    private var isSearching = false
 
     // MARK: Lifecycle
 
     public override func viewDidLoad() {
         super.viewDidLoad()
 
-        loadPaths()
-        loadSounds()
-        printPathEnum()
+        configureUI()
+        loadData()
     }
 
     // MARK: UITableViewDataSource
 
     public override func numberOfSections(in tableView: UITableView) -> Int {
-        return directories.count
+        return isSearching ? 1 : directories.count
     }
 
     public override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return directories[section].path
+        return isSearching ? nil : directories[section].path
     }
 
     public override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let key = directories[section].path
-        return sounds[key]?.count ?? 0
+        if isSearching {
+            return searchResults.count
+        } else {
+            let key = directories[section].path
+            return sounds[key]?.count ?? 0
+        }
     }
 
     public override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "SystemSoundCell", for: indexPath)
-        if let soundURL = soundURL(for: indexPath) {
-            cell.textLabel?.text = soundURL.lastPathComponent
-            cell.detailTextLabel?.text = "\(indexPath.row + 1)"
-        }
+        cell.textLabel?.text = soundURL(for: indexPath)?.lastPathComponent ?? "n/a"
         return cell
     }
 
@@ -58,10 +62,48 @@ public final class SystemSoundsTableViewController: UITableViewController {
         }
     }
 
+    // MARK: UISearchResultsUpdating
+
+    public func updateSearchResults(for searchController: UISearchController) {
+        if let searchText = searchController.searchBar.text, !searchText.isEmpty {
+            searchResults = files.filter { $0.path.lowercased().contains(searchText.lowercased()) }
+            isSearching = true
+        } else {
+            isSearching = false
+        }
+        tableView.reloadData()
+    }
+
+    // MARK: UISearchBarDelegate
+
+    public func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        isSearching = false
+        tableView.reloadData()
+    }
+
     // MARK: Helpers
+
+    private func configureUI() {
+        navigationController?.navigationBar.prefersLargeTitles = true
+
+        searchController.searchBar.delegate = self
+        searchController.searchResultsUpdater = self
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.placeholder = "Search..."
+
+        navigationItem.searchController = searchController
+        definesPresentationContext = true
+    }
+
+    private func loadData() {
+        loadPaths()
+        loadSounds()
+        printPathEnum()
+    }
 
     /// - Attention: This method will only work on the real device, not on simulator!
     func loadPaths() {
+        directories = [systemSoundsDirectoryURL]
         let keys = [URLResourceKey.isDirectoryKey]
         let enumerator = FileManager.default.enumerator(at: systemSoundsDirectoryURL, includingPropertiesForKeys: keys)
         enumerator?.forEach { (item) in
@@ -82,15 +124,6 @@ public final class SystemSoundsTableViewController: UITableViewController {
             let soundsAtPath = files.filter { $0.deletingLastPathComponent().path == path }
             sounds[path] = soundsAtPath
         }
-    }
-
-    func soundURL(for indexPath: IndexPath) -> URL? {
-        let path = directories[indexPath.section].path
-        let sortedSounds = sounds[path]?.sorted {
-            $0.path.localizedCaseInsensitiveCompare($1.path) == .orderedAscending
-        }
-        let soundURL = sortedSounds?[indexPath.row]
-        return soundURL
     }
 
     func printPathEnum() {
@@ -116,6 +149,19 @@ public final class SystemSoundsTableViewController: UITableViewController {
         }
         text += "}"
         print(text)
+    }
+
+    func soundURL(for indexPath: IndexPath) -> URL? {
+        if isSearching {
+            return searchResults[indexPath.row]
+        } else {
+            let path = directories[indexPath.section].path
+            let sortedSounds = sounds[path]?.sorted {
+                $0.path.localizedCaseInsensitiveCompare($1.path) == .orderedAscending
+            }
+            let soundURL = sortedSounds?[indexPath.row]
+            return soundURL
+        }
     }
 
 }
