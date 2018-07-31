@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "8B782E771CE8E82C00B3974B"
-               BuildableName = "AESystemSound.app"
-               BlueprintName = "AESystemSound"
-               ReferencedContainer = "container:AESystemSound.xcodeproj">
+               BuildableName = "AESound.app"
+               BlueprintName = "AESound"
+               ReferencedContainer = "container:AESound.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "8B782E771CE8E82C00B3974B"
-            BuildableName = "AESystemSound.app"
-            BlueprintName = "AESystemSound"
-            ReferencedContainer = "container:AESystemSound.xcodeproj">
+            BuildableName = "AESound.app"
+            BlueprintName = "AESound"
+            ReferencedContainer = "container:AESound.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -56,9 +56,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "8B782E771CE8E82C00B3974B"
-            BuildableName = "AESystemSound.app"
-            BlueprintName = "AESystemSound"
-            ReferencedContainer = "container:AESystemSound.xcodeproj">
+            BuildableName = "AESound.app"
+            BlueprintName = "AESound"
+            ReferencedContainer = "container:AESound.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -75,9 +75,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "8B782E771CE8E82C00B3974B"
-            BuildableName = "AESystemSound.app"
-            BlueprintName = "AESystemSound"
-            ReferencedContainer = "container:AESystemSound.xcodeproj">
+            BuildableName = "AESound.app"
+            BlueprintName = "AESound"
+            ReferencedContainer = "container:AESound.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
