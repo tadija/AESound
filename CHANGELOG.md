@@ -1,5 +1,12 @@
 # Changelog
 
+## Version 0.3.0
+
+- Renamed project from `AESystemSound` -> `AESound`
+- Added both `AudioToolbox` and `AVFoundation` variants for playing sound
+- Added search and framework toggle to demo project
+- Other improvements and refactoring
+
 ## Version 0.2.0
 
 - New enum with all system sound paths (iOS 11.4.1)
