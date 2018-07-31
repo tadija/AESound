@@ -1,5 +1,5 @@
 /**
- *  https://github.com/tadija/AESystemSound
+ *  https://github.com/tadija/AESound
  *  Copyright (c) Marko Tadić 2018
  *  Licensed under the MIT license. See LICENSE file.
  */
@@ -53,7 +53,7 @@ public final class SystemSoundsTableViewController: UITableViewController {
 
     public override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let soundURL = soundURL(for: indexPath) {
-            AESystemSound.play(fromPath: soundURL.path)
+            AESound.play(fromPath: soundURL.path)
             tableView.deselectRow(at: indexPath, animated: true)
         }
     }

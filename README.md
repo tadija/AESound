@@ -1,4 +1,4 @@
-# AESystemSound
+# AESound
 
 **Convenience API for playing iOS system sounds**
 
@@ -7,12 +7,12 @@
 ## Usage
 
 ```swift
-AESystemSound.play(.uisounds_go_to_sleep_alert)
+AESound.play(.uisounds_go_to_sleep_alert)
 ```
 
 ## Installation
 
-- Drag [AESystemSound.swift](AESystemSound/AESystemSound.swift) file into project
+- Drag [AESound.swift](AESound/AESound.swift) file into project
 
 ## License
 This code is released under the MIT license. See [LICENSE](LICENSE) for details.

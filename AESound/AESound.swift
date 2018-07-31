@@ -1,13 +1,13 @@
 /**
- *  https://github.com/tadija/AESystemSound
+ *  https://github.com/tadija/AESound
  *  Copyright (c) Marko Tadić 2018
  *  Licensed under the MIT license. See LICENSE file.
  */
 
 import AudioToolbox
 
-public struct AESystemSound {
-    public static func play(_ path: AESystemSound.Path) {
+public struct AESound {
+    public static func play(_ path: AESound.Path) {
         play(fromPath: path.rawValue)
     }
 
@@ -23,7 +23,7 @@ public struct AESystemSound {
     }
 }
 
-extension AESystemSound {
+extension AESound {
     public enum Path: String {
         case modern_camera_shutter_burst_begin = "/System/Library/Audio/UISounds/Modern/camera_shutter_burst_begin.caf"
         case modern_camera_shutter_burst_end = "/System/Library/Audio/UISounds/Modern/camera_shutter_burst_end.caf"
