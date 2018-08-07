@@ -16,17 +16,21 @@ public final class AESound {
     }
 
     public func playSystemSound(atPath path: String) {
+        #if !targetEnvironment(simulator)
         var id: SystemSoundID = 0
         let url = URL(fileURLWithPath: path)
         AudioServicesCreateSystemSoundID(url as CFURL, &id)
         playSystemSound(withID: id)
+        #endif
     }
 
     public func playSystemSound(withID id: SystemSoundID) {
+        #if !targetEnvironment(simulator)
         AudioServicesAddSystemSoundCompletion(id, nil, nil, { (id, _) -> Void in
             AudioServicesDisposeSystemSoundID(id)
         }, nil)
         AudioServicesPlaySystemSound(id)
+        #endif
     }
 
     // MARK: AVFoundation

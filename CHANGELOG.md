@@ -1,5 +1,9 @@
 # Changelog
 
+## Version 0.3.1
+
+- Minor fixes and improvements
+
 ## Version 0.3.0
 
 - Renamed project from `AESystemSound` -> `AESound`
