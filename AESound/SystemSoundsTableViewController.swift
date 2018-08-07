@@ -121,6 +121,7 @@ public final class SystemSoundsTableViewController: UITableViewController, UISea
         searchController.searchBar.placeholder = "Search..."
 
         navigationItem.searchController = searchController
+        navigationItem.hidesSearchBarWhenScrolling = false
         definesPresentationContext = true
 
         navigationItem.rightBarButtonItem = toggleFrameworkButton
