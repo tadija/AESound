@@ -8,6 +8,8 @@ import AudioToolbox
 import AVFoundation
 
 public final class AESound {
+    
+    public init() {}
 
     // MARK: AudioToolbox
 

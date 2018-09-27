@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "8B6BF0E2215D6FCA00B75390"
-               BuildableName = "AESound.framework"
-               BlueprintName = "AESound"
-               ReferencedContainer = "container:AESound.xcodeproj">
+               BlueprintIdentifier = "8B782E771CE8E82C00B3974B"
+               BuildableName = "AESoundExample.app"
+               BlueprintName = "AESoundExample"
+               ReferencedContainer = "container:AESoundExample.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -29,6 +29,15 @@
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
       </Testables>
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "8B782E771CE8E82C00B3974B"
+            BuildableName = "AESoundExample.app"
+            BlueprintName = "AESoundExample"
+            ReferencedContainer = "container:AESoundExample.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </TestAction>
@@ -42,15 +51,16 @@
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES">
-      <MacroExpansion>
+      <BuildableProductRunnable
+         runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "8B6BF0E2215D6FCA00B75390"
-            BuildableName = "AESound.framework"
-            BlueprintName = "AESound"
-            ReferencedContainer = "container:AESound.xcodeproj">
+            BlueprintIdentifier = "8B782E771CE8E82C00B3974B"
+            BuildableName = "AESoundExample.app"
+            BlueprintName = "AESoundExample"
+            ReferencedContainer = "container:AESoundExample.xcodeproj">
          </BuildableReference>
-      </MacroExpansion>
+      </BuildableProductRunnable>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>
@@ -60,15 +70,16 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
-      <MacroExpansion>
+      <BuildableProductRunnable
+         runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "8B6BF0E2215D6FCA00B75390"
-            BuildableName = "AESound.framework"
-            BlueprintName = "AESound"
-            ReferencedContainer = "container:AESound.xcodeproj">
+            BlueprintIdentifier = "8B782E771CE8E82C00B3974B"
+            BuildableName = "AESoundExample.app"
+            BlueprintName = "AESoundExample"
+            ReferencedContainer = "container:AESoundExample.xcodeproj">
          </BuildableReference>
-      </MacroExpansion>
+      </BuildableProductRunnable>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">

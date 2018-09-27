@@ -5,6 +5,7 @@
  */
 
 import UIKit
+import AESound
 
 public final class SystemSoundsTableViewController: UITableViewController, UISearchResultsUpdating, UISearchBarDelegate {
 
