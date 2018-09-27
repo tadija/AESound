@@ -1,5 +1,10 @@
 # Changelog
 
+## Version 0.3.2
+
+- Bumped Swift language version to 4.2 with Xcode 10
+- Added support for Swift Package Manager and Carthage
+
 ## Version 0.3.1
 
 - Minor fixes and improvements
