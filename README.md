@@ -20,7 +20,19 @@ output.cleanupSound(atPath: path)
 
 ## Installation
 
-- Add [AESound.swift](AESound/AESound.swift) file into project
+- [Swift Package Manager](https://swift.org/package-manager/):
+
+```
+.Package(url: "https://github.com/tadija/AESound.git", majorVersion: 0)
+```
+
+- [Carthage](https://github.com/Carthage/Carthage):
+
+```ogdl
+github "tadija/AESound"
+```
+
+- Manually: Add [AESound.swift](AESound/AESound.swift) file into project.
 
 ## License
 This code is released under the MIT license. See [LICENSE](LICENSE) for details.
