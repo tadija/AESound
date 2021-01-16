@@ -12,7 +12,7 @@ AESound().playSystemSound(.uisounds_go_to_sleep_alert)
 
 // AVFoundation
 let output = AESound()
-let path = AESound.SystemSound.uisounds_go_to_sleep_alert.rawValue
+let path = SystemSound.uisounds_go_to_sleep_alert.rawValue
 output.prepareSound(atPath: path)
 output.playSound(atPath: path)
 output.cleanupSound(atPath: path)
@@ -24,12 +24,6 @@ output.cleanupSound(atPath: path)
 
 ```
 .Package(url: "https://github.com/tadija/AESound.git", majorVersion: 0)
-```
-
-- [Carthage](https://github.com/Carthage/Carthage):
-
-```ogdl
-github "tadija/AESound"
 ```
 
 - Manually: Add [AESound.swift](AESound/AESound.swift) file into project.

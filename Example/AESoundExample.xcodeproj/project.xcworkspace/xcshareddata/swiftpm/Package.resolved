@@ -1,0 +1,16 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "AESound",
+        "repositoryURL": "https://github.com/tadija/AESound",
+        "state": {
+          "branch": "master",
+          "revision": "adbbb4af483a4005d53729a35d8718d62ec1f7e0",
+          "version": null
+        }
+      }
+    ]
+  },
+  "version": 1
+}

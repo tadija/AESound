@@ -1,10 +1,4 @@
-// swift-tools-version:4.2
-
-/**
- *  https://github.com/tadija/AESound
- *  Copyright (c) Marko Tadić 2018
- *  Licensed under the MIT license. See LICENSE file.
- */
+// swift-tools-version:5.3
 
 import PackageDescription
 

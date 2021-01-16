@@ -1,5 +1,5 @@
 /**
- *  https://github.com/tadija/AESound
+ *  https://gist.github.com/tadija/f525e0c544fae45fc43a50711a392356
  *  Copyright © 2018-2021 Marko Tadić
  *  Licensed under the MIT license
  */
